@@ -1,3 +1,4 @@
+import { Component } from 'react'
 import {
     NativeMethodsMixin,
     ViewProperties,
@@ -139,7 +140,12 @@ type AnimatableAnimationMethods =
 interface AnimatableComponent<P extends {}, S extends {}> extends
     NativeMethodsMixin,
     AnimatableAnimationMethods,
+    Component,
     ClassicComponentClass<AnimatableProperties<S> & P> {
+
+    refs: {
+        [key: string]: Component<any, any>
+    }
 
     stopAnimation(): void;
 
